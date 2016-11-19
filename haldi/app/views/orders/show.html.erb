@@ -39,7 +39,7 @@
 <% end %>
 
 <h5> Total: $ <%= m_price + d_price + ds_price %></h5>
-<% @order.price = m_price + d_price + ds_price %>
+
 
 
 <%= link_to 'Change your order', edit_restaurant_order_path(@restaurant, @order.id),  class: 'btn' %>
