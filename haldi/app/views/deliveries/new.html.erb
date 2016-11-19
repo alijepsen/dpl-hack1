@@ -30,17 +30,19 @@
       <br/>
       <%= f.select :payment_type, options_for_select(['Visa', 'Master Card', 'Debit Card', 'Paypal']) %>
     </div>
-
-    <p>Your order</p>
-    <p><%= @order.main_dish %></p>
-    <p><%= @order.drinks %></p>
-    <p><%= @order.dessert %></p>
-
-    <%= f.submit 'Payment', class: 'btn' %>
+    <div class='text-align: center'>
+      <p><strong>Your order:</strong></p>
+      <p><%= @order.main_dish %></p>
+      <p><%= @order.drinks %></p>
+      <p><%= @order.dessert %></p>
+    </div>
+    <%= f.submit 'Payment', class: 'btn grey darken-2' %>
   <% end %>
 
 
   <div class="center">
-    <%= link_to 'Back', :back, class: 'btn' %>
+    <hr />
+    <br/>
+    <%= link_to 'Back', :back, class: 'btn grey darken-2' %>
   </div>
 </div>
