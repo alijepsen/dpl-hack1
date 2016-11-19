@@ -1,11 +1,12 @@
-<h1>Deliveries</h1>
-<p>Customer Information for delivery</p>
-
 <div class="row">
-  <%= form_for [@order, @delivery] do |f| %>
+  <%= form_for @restaurant do |f| %>
     <div class="col m6">
       <%= f.label :name %>
       <%= f.text_field :name, required: true %>
+    </div>
+    <div class="col m6">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
     </div>
     <div class="col m6">
       <%= f.label :street %>
@@ -23,19 +24,18 @@
       <%= f.label :postal %>
       <%= f.number_field :postal, required: true %>
     </div>
-    <div class='input-field col m6'>
-      <%= f.label :payment_type %>
-      <br/>
-      <br/>
-      <br/>
-      <%= f.select :payment_type, options_for_select(['Visa', 'Master Card', 'Debit Card', 'Paypal']) %>
+    <div class="col m6">
+      <%= f.label :delivery %>
+      <%= f.select :delivery, options_for_select(['Yes', 'No']) %>
     </div>
-
-    <p>Your order</p>
-    <p><%= @order.main_dish %></p>
-    <p><%= @order.drinks %></p>
-    <p><%= @order.dessert %></p>
-
-    <%= f.submit 'Payment', class: 'btn' %>
+    <div class="col m6">
+      <%= f.label :latitude %>
+      <%= f.text_field :latitude %>
+    </div>
+    <div class="col m6">
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude %>
+    </div>
+    <%= f.submit nil, class: 'btn' %>
   <% end %>
 </div>

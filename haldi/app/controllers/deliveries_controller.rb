@@ -3,7 +3,7 @@ class DeliveriesController < ApplicationController
   before_action :set_delivery, except: [:index, :create, :new]
 
   def index
-    @deliveries = @order.deliveries
+    @delivery = @order.delivery
   end
 
   def new
@@ -14,7 +14,7 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.new(delivery_params)
     @delivery.order_id = @order.id
     if @delivery.save
-      redirect_to order_deliveries_path(@order, @delivery), success: 'Perfect!'
+      redirect_to order_delivery_path(@order, @delivery), success: 'Perfect!'
     else
       render :new
     end
@@ -42,7 +42,7 @@ class DeliveriesController < ApplicationController
 
   private
   def delivery_params
-    params.require(:delivery).permit(:total, :item)
+    params.require(:delivery).permit(:name, :street, :state, :postal, :city, :payment_type)
   end
 
   def set_order
@@ -50,6 +50,6 @@ class DeliveriesController < ApplicationController
   end
 
   def set_delivery
-    @delivery = @order.deliveries.find(params[:id])
+    @delivery = Delivery.find(params[:id])
   end
 end

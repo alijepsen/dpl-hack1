@@ -3,4 +3,8 @@ class Order < ApplicationRecord
 
   belongs_to :restaurant
   has_one :delivery, dependent: :destroy
+
+  def total
+    @order.price = m_price + d_price + ds_price
+  end
 end

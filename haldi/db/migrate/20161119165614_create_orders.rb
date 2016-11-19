@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :drinks
       t.string :dessert
       t.float :price
+
       t.belongs_to :restaurant, foreign_key: true
 
       t.timestamps

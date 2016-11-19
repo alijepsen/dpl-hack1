@@ -16,11 +16,17 @@ ActiveRecord::Schema.define(version: 20161119170332) do
   enable_extension "plpgsql"
 
   create_table "deliveries", force: :cascade do |t|
-    t.string   "item",       null: false
-    t.integer  "total",      null: false
+    t.string   "item"
+    t.integer  "total"
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal"
+    t.string   "payment_type"
     t.integer  "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["order_id"], name: "index_deliveries_on_order_id", using: :btree
   end
 

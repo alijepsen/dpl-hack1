@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.restaurant_id = @restaurant.id
     if @order.save
-      redirect_to restaurant_orders_path(@restaurant, @order), success: 'Perfect!'
+      redirect_to restaurant_order_path(@restaurant, @order), success: 'Perfect!'
     else
       render :new
     end
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to restaurant_orders_path(@restaurant, @order), success: 'Great!'
+      redirect_to restaurant_order_path(@restaurant, @order), success: 'Great!'
     else
       render :edit
     end
@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
   end
 
   def set_order
-    @order = @restaurant.orders.find(params[:id])
+    # @order = @restaurant.order
+    @order = Order.find(params[:id])
   end
 end
