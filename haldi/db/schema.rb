@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20161119170332) do
   enable_extension "plpgsql"
 
   create_table "deliveries", force: :cascade do |t|
-    t.string   "item"
-    t.integer  "total"
+    t.string   "item",       null: false
+    t.integer  "total",      null: false
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161119170332) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "main_dish"
+    t.string   "main_dish",     null: false
     t.string   "drinks"
     t.string   "dessert"
     t.float    "price"
@@ -36,14 +36,15 @@ ActiveRecord::Schema.define(version: 20161119170332) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.text     "description"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postal"
+    t.string   "street"
+    t.string   "city",        null: false
+    t.string   "state",       null: false
+    t.string   "postal",      null: false
     t.boolean  "delivery"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",    null: false
+    t.float    "longitude",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

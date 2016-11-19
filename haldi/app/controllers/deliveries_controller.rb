@@ -7,11 +7,12 @@ class DeliveriesController < ApplicationController
   end
 
   def new
-    @delivery = @order.deliveries.new
+    @delivery = Delivery.new
   end
 
   def create
-    @delivery = @order.deliveries.new(delivery_params)
+    @delivery = Delivery.new(delivery_params)
+    @delivery.order_id = @order.id
     if @delivery.save
       redirect_to order_deliveries_path(@order, @delivery), success: 'Perfect!'
     else

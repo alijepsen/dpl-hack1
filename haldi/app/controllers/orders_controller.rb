@@ -1,17 +1,18 @@
 class OrdersController < ApplicationController
+  before_action :set_restaurant
   before_action :set_order, except: [:index, :new, :create]
-  before_action :set_restaurant, except: [:index, :new, :create]
 
   def index
-    @orders = @restaurant.orders
+    @order = @restaurant.order
   end
 
   def new
-    @order = @restaurant.orders.new
+    @order = Order.new
   end
 
   def create
-    @order = @restaurant.orders.new(order_params)
+    @order = Order.new(order_params)
+    @order.restaurant_id = @restaurant.id
     if @order.save
       redirect_to restaurant_orders_path(@restaurant, @order), success: 'Perfect!'
     else
