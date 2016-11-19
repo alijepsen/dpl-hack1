@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
-    before_action :set_restaurant, except: [:index, :new, :create]
+  before_action :authenticate_user!, except: [:index, :show]  
+  before_action :set_restaurant, except: [:index, :new, :create]
 
   def index
     @restaurants= Restaurant.all
@@ -12,9 +13,8 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant), success: "Restaurant Created"
+      redirect_to restaurant_path(@restaurant)
     else
-      binding.pry
       render :new
     end
   end
