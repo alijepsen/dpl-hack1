@@ -1,0 +1,9 @@
+<h1>This is a great blog as you can see it!!!</h1>
+<p>Yeah!!! That's great!!!!</p>
+
+<%= link_to 'New Post', new_portal_path, class: 'btn' %>
+
+<% @portals.each do |portal| %>
+  <h4><%= link_to portal.title, portal_path(portal)%></h4>
+  <p><%= portal.text%></p>
+<% end %>

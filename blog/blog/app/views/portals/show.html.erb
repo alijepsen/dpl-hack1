@@ -1,0 +1,6 @@
+<h1><%= @portal.title %></h1>
+<p><%= @portal.text %></p>
+
+<%= link_to 'Delete Post', portal_path(@portal), method: :destroy, class: 'btn' %>
+<%= link_to 'Edit Post', edit_portal_path(@portal), class: 'btn' %>
+<%= link_to 'Home', root_path, class: 'btn' %>
